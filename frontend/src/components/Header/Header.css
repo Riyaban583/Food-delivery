@@ -1,0 +1,332 @@
+.header {
+    height: clamp(300px, 34vw, 600px);
+    margin: 40px auto;
+    background: url('/header_img.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+                0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Gradient overlay for better text readability */
+.header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+    );
+    z-index: 1;
+}
+
+/* Optional animated gradient overlay */
+.header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 99, 71, 0.1) 0%,
+        transparent 50%
+    );
+    animation: shimmer 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(16px, 1.5vw, 24px);
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    z-index: 2;
+    animation: slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.header-contents h2 {
+    font-weight: 700;
+    color: white;
+    font-size: clamp(28px, 4.5vw, 64px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3),
+                 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-contents p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 500px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+}
+
+.header-contents button {
+    border: none;
+    color: #2a2a2a;
+    font-weight: 600;
+    padding: clamp(12px, 1.2vw, 16px) clamp(28px, 2.5vw, 40px);
+    background: white;
+    font-size: clamp(14px, 1vw, 16px);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+}
+
+.header-contents button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.header-contents button:hover::before {
+    left: 100%;
+}
+
+.header-contents button:hover {
+    background: linear-gradient(135deg, #ff6347, #ff8c42);
+    color: white;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 99, 71, 0.4);
+}
+
+.header-contents button:active {
+    transform: translateY(-2px) scale(1.02);
+    transition: all 0.1s ease;
+}
+
+/* Icon inside button (optional) */
+.header-contents button::after {
+    content: '→';
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.header-contents button:hover::after {
+    transform: translateX(4px);
+}
+
+/* Focus state for accessibility */
+.header-contents button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+/* Badge or tag (optional) */
+.header-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 2;
+    animation: fadeIn 1s ease 0.8s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1050px) {
+    .header {
+        height: clamp(280px, 40vw, 500px);
+        margin: 30px auto;
+        border-radius: 20px;
+    }
+    
+    .header-contents {
+        max-width: 55%;
+        left: 5vw;
+        bottom: 8%;
+    }
+    
+    .header-contents h2 {
+        font-size: clamp(24px, 4vw, 48px);
+    }
+    
+    .header-contents p {
+        font-size: clamp(13px, 1.3vw, 16px);
+    }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 750px) {
+    .header {
+        height: clamp(250px, 50vw, 400px);
+        margin: 20px auto;
+        border-radius: 16px;
+    }
+    
+    .header-contents {
+        max-width: 70%;
+        left: 5vw;
+        bottom: 6%;
+        gap: 12px;
+    }
+    
+    .header-contents h2 {
+        font-size: clamp(22px, 5vw, 32px);
+    }
+    
+    .header-contents p {
+        display: none;
+    }
+    
+    .header-contents button {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .header {
+        height: clamp(220px, 60vw, 350px);
+        margin: 16px;
+        border-radius: 12px;
+    }
+    
+    .header-contents {
+        max-width: 80%;
+        left: 4vw;
+        bottom: 5%;
+    }
+    
+    .header-contents h2 {
+        font-size: 20px;
+    }
+    
+    .header-contents button {
+        padding: 10px 24px;
+        font-size: 13px;
+    }
+    
+    .header-badge {
+        top: 16px;
+        right: 16px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .header::after,
+    .header-contents,
+    .header-contents h2,
+    .header-contents p,
+    .header-contents button,
+    .header-badge {
+        animation: none;
+    }
+    
+    .header-contents button:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .header::before {
+        background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .header-contents h2,
+    .header-contents p {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .header {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                    0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Print styles */
+@media print {
+    .header {
+        height: 300px;
+        margin: 20px 0;
+        border-radius: 0;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .header::before,
+    .header::after {
+        display: none;
+    }
+}

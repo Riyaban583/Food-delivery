@@ -343,16 +343,6 @@ Contributions, issues, and feature requests are welcome!
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
----
-
-## 👨‍💻 Author
-
-**Your Name**
-
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
-
----
 
 <div align="center">
 

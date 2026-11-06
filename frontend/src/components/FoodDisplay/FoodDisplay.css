@@ -1,0 +1,446 @@
+/* Root variables for easy theming */
+:root {
+  --food-primary: #ff6347;
+  --food-secondary: #ff8c42;
+  --food-text: #262626;
+  --food-text-light: #666;
+  --food-bg: #ffffff;
+  --food-skeleton: #f0f0f0;
+  --food-skeleton-shine: #f8f8f8;
+  --food-empty-text: #999;
+  --food-border-radius: 16px;
+  --food-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --food-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --food-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --food-text: #f5f5f5;
+    --food-text-light: #999;
+    --food-bg: #1a1a1a;
+    --food-skeleton: #2a2a2a;
+    --food-skeleton-shine: #333;
+    --food-empty-text: #666;
+    --food-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --food-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Main container with improved spacing */
+.food-display {
+  margin-top: 60px;
+  padding: 0 0 40px;
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Enhanced slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Header with gradient text option */
+.food-display h2 {
+  font-size: clamp(24px, 2vw, 36px);
+  font-weight: 600;
+  color: var(--food-text);
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  transition: var(--food-transition);
+  will-change: transform;
+}
+
+/* Optional gradient text effect */
+.food-display h2.gradient-text {
+  background: linear-gradient(135deg, var(--food-primary), var(--food-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hover effect for header */
+.food-display h2:hover {
+  transform: translateX(4px);
+}
+
+/* Enhanced underline with glow effect */
+.food-display h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--food-primary), var(--food-secondary));
+  border-radius: 2px;
+  animation: expandWidth 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+  box-shadow: 0 0 12px rgba(255, 99, 71, 0.3);
+  transition: var(--food-transition);
+}
+
+.food-display h2:hover::after {
+  width: 80px;
+  box-shadow: 0 0 20px rgba(255, 99, 71, 0.5);
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+/* Enhanced grid with better flow */
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  row-gap: clamp(40px, 5vw, 60px);
+  margin-top: 40px;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* Grid item wrapper with hover effects */
+.food-display-list > * {
+  animation: fadeInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transition: var(--food-transition);
+  will-change: transform, box-shadow;
+  position: relative;
+}
+
+/* Hover state for grid items */
+.food-display-list > *:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--food-shadow-hover);
+  z-index: 1;
+}
+
+/* Staggered animation with extended support */
+.food-display-list > *:nth-child(1) { animation-delay: 0.05s; }
+.food-display-list > *:nth-child(2) { animation-delay: 0.1s; }
+.food-display-list > *:nth-child(3) { animation-delay: 0.15s; }
+.food-display-list > *:nth-child(4) { animation-delay: 0.2s; }
+.food-display-list > *:nth-child(5) { animation-delay: 0.25s; }
+.food-display-list > *:nth-child(6) { animation-delay: 0.3s; }
+.food-display-list > *:nth-child(7) { animation-delay: 0.35s; }
+.food-display-list > *:nth-child(8) { animation-delay: 0.4s; }
+.food-display-list > *:nth-child(9) { animation-delay: 0.45s; }
+.food-display-list > *:nth-child(10) { animation-delay: 0.5s; }
+.food-display-list > *:nth-child(11) { animation-delay: 0.55s; }
+.food-display-list > *:nth-child(12) { animation-delay: 0.6s; }
+.food-display-list > *:nth-child(n+13) { animation-delay: 0.65s; }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Enhanced empty state with icon support */
+.food-display-list:empty::after {
+  content: '🍽️\A No items found';
+  white-space: pre;
+  display: block;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--food-empty-text);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  animation: fadeIn 0.5s ease-out 0.3s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom empty state with attribute */
+.food-display-list[data-empty-message]:empty::after {
+  content: attr(data-empty-message);
+}
+
+/* Loading skeleton with shimmer effect */
+.food-display-list.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.food-display-list.loading > * {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    var(--food-skeleton) 0%,
+    var(--food-skeleton-shine) 50%,
+    var(--food-skeleton) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--food-border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Skeleton pulse overlay */
+.food-display-list.loading > *::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: skeletonSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes skeletonSlide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Filter/sort animation */
+.food-display-list.filtering > * {
+  animation: filterOut 0.3s ease-out;
+}
+
+@keyframes filterOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Intersection Observer fade-in for lazy loading */
+.food-display-list > *.lazy-load {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.food-display-list > *.lazy-load.visible {
+  animation: lazyFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes lazyFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+.food-display-list > *:focus-visible {
+  outline: 3px solid var(--food-primary);
+  outline-offset: 4px;
+  border-radius: var(--food-border-radius);
+}
+
+/* Responsive breakpoints with enhanced spacing */
+@media (max-width: 1200px) {
+  .food-display-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .food-display {
+    margin-top: 40px;
+  }
+  
+  .food-display h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+  
+  .food-display-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    row-gap: 32px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .food-display {
+    margin-top: 30px;
+    padding: 0 0 30px;
+  }
+  
+  .food-display h2 {
+    font-size: 22px;
+  }
+  
+  .food-display-list {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    row-gap: 24px;
+  }
+  
+  /* Reduce hover effects on touch devices */
+  .food-display-list > *:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    row-gap: 20px;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .food-display,
+  .food-display h2::after,
+  .food-display-list > * {
+    animation: none;
+  }
+  
+  .food-display-list > *:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .food-display h2::after {
+    background: currentColor;
+    box-shadow: none;
+  }
+  
+  .food-display-list > * {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .food-display {
+    margin-top: 20px;
+    animation: none;
+  }
+  
+  .food-display h2::after {
+    display: none;
+  }
+  
+  .food-display-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    row-gap: 15px;
+  }
+  
+  .food-display-list > * {
+    animation: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
+
+/* Container queries for more granular control (future-proof) */
+@supports (container-type: inline-size) {
+  .food-display {
+    container-type: inline-size;
+    container-name: food-display;
+  }
+  
+  @container food-display (max-width: 600px) {
+    .food-display-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+}
+
+/* Performance optimizations */
+.food-display-list > * {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+/* GPU acceleration hints */
+.food-display,
+.food-display h2,
+.food-display-list > * {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}

@@ -1,0 +1,709 @@
+.login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    background: 
+        radial-gradient(ellipse at top, rgba(255, 99, 71, 0.1), transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(138, 43, 226, 0.08), transparent 50%),
+        rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    animation: fadeInBackdrop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+@keyframes fadeInBackdrop {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px) saturate(100%);
+        -webkit-backdrop-filter: blur(0px) saturate(100%);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(12px) saturate(120%);
+        -webkit-backdrop-filter: blur(12px) saturate(120%);
+    }
+}
+
+.login-popup-container {
+    place-self: center;
+    width: clamp(330px, 90vw, 450px);
+    max-width: 450px;
+    color: #666;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 36px 40px;
+    border-radius: 24px;
+    font-size: 14px;
+    box-shadow: 
+        0 32px 64px rgba(0, 0, 0, 0.25),
+        0 16px 32px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: slideInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative gradient accent */
+.login-popup-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #ff6347 0%, 
+        #ff7f50 25%,
+        #ff8c42 50%,
+        #ff7f50 75%,
+        #ff6347 100%);
+    background-size: 200% 100%;
+    animation: gradientSlide 3s ease-in-out infinite;
+}
+
+@keyframes gradientSlide {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Subtle pattern overlay */
+.login-popup-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 99, 71, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 140, 66, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.login-popup-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes slideInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(40px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0px);
+    }
+}
+
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    animation: fadeInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-popup-title h2 {
+    color: #1a1a1a;
+    font-size: clamp(24px, 2vw, 28px);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-popup-title img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    padding: 8px;
+    margin: -8px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0);
+    background: transparent;
+}
+
+.login-popup-title img:hover {
+    background: linear-gradient(135deg, #fee, #fdd);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.2);
+}
+
+.login-popup-title img:active {
+    transform: rotate(90deg) scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.login-popup-subtitle {
+    color: #666;
+    font-size: 15px;
+    margin: -8px 0 8px;
+    line-height: 1.5;
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.login-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-popup-input-group {
+    position: relative;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) calc(0.4s + var(--index, 0) * 0.1s) backwards;
+}
+
+.login-popup-inputs label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.login-popup-input-group:focus-within label {
+    color: #ff6347;
+}
+
+.login-popup-inputs input {
+    width: 100%;
+    outline: none;
+    border: 2px solid #e5e5e5;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+    color: #1a1a1a;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+.login-popup-inputs input:hover {
+    border-color: #d0d0d0;
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.login-popup-inputs input:focus {
+    border-color: #ff6347;
+    background: #fff;
+    box-shadow: 
+        0 0 0 4px rgba(255, 99, 71, 0.1),
+        0 4px 16px rgba(255, 99, 71, 0.15);
+    transform: translateY(-2px);
+}
+
+.login-popup-inputs input::placeholder {
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.login-popup-inputs input:focus::placeholder {
+    color: #ccc;
+}
+
+/* Error state with animation */
+.login-popup-inputs input.error {
+    border-color: #ff4444;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-4px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(4px);
+    }
+}
+
+.login-popup-inputs input.error:focus {
+    box-shadow: 
+        0 0 0 4px rgba(255, 68, 68, 0.1),
+        0 4px 16px rgba(255, 68, 68, 0.15);
+}
+
+/* Success state */
+.login-popup-inputs input.success {
+    border-color: #22c55e;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.login-popup-inputs input.success:focus {
+    box-shadow: 
+        0 0 0 4px rgba(34, 197, 94, 0.1),
+        0 4px 16px rgba(34, 197, 94, 0.15);
+}
+
+/* Password toggle icon */
+.password-toggle {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.password-toggle:hover {
+    opacity: 1;
+    background: rgba(255, 99, 71, 0.1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.password-toggle:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Primary button */
+.login-popup-container button {
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    color: white;
+    background: linear-gradient(135deg, #ff6347 0%, #ff8c42 100%);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 6px 20px rgba(255, 99, 71, 0.35),
+        0 3px 10px rgba(255, 99, 71, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s backwards;
+}
+
+/* Button shine effect */
+.login-popup-container button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.login-popup-container button:hover::before {
+    left: 100%;
+}
+
+.login-popup-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 28px rgba(255, 99, 71, 0.45),
+        0 6px 16px rgba(255, 99, 71, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #ff7356 0%, #ff9952 100%);
+}
+
+.login-popup-container button:active {
+    transform: translateY(-1px);
+    transition: all 0.1s ease;
+    box-shadow: 
+        0 4px 12px rgba(255, 99, 71, 0.35),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-popup-container button:focus-visible {
+    outline: 3px solid rgba(255, 99, 71, 0.5);
+    outline-offset: 3px;
+}
+
+/* Loading state */
+.login-popup-container button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    background: linear-gradient(135deg, #ccc 0%, #bbb 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-popup-container button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.login-popup-container button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Checkbox styling */
+.login-popup-condition {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: -4px;
+    font-size: 13px;
+    line-height: 1.6;
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+}
+
+.login-popup-condition input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    cursor: pointer;
+    accent-color: #ff6347;
+    margin-top: 2px;
+}
+
+.login-popup-condition label {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.login-popup-condition label:hover {
+    color: #ff6347;
+}
+
+/* Bottom text */
+.login-popup p {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s backwards;
+}
+
+.login-popup p span {
+    color: #ff6347;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+}
+
+.login-popup p span:hover {
+    color: #ff7f50;
+    border-bottom-color: #ff7f50;
+}
+
+.login-popup p span:active {
+    transform: scale(0.98);
+}
+
+/* Divider with text */
+.login-popup-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0;
+    color: #999;
+    font-size: 13px;
+}
+
+.login-popup-divider::before,
+.login-popup-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+}
+
+/* Social login buttons */
+.login-popup-social {
+    display: flex;
+    gap: 12px;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+}
+
+.login-popup-social button {
+    flex: 1;
+    background: white;
+    color: #2a2a2a;
+    border: 2px solid #e5e5e5;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+}
+
+.login-popup-social button:hover {
+    border-color: #d0d0d0;
+    background: #fafafa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Error message */
+.error-message {
+    color: #ff4444;
+    font-size: 13px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.error-message::before {
+    content: '⚠';
+    font-size: 14px;
+}
+
+/* Success message */
+.success-message {
+    color: #22c55e;
+    font-size: 13px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.success-message::before {
+    content: '✓';
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+    .login-popup {
+        padding: 16px;
+    }
+    
+    .login-popup-container {
+        padding: 28px 24px;
+        border-radius: 20px;
+        gap: 20px;
+    }
+    
+    .login-popup-title h2 {
+        font-size: 22px;
+    }
+    
+    .login-popup-inputs {
+        gap: 16px;
+    }
+    
+    .login-popup-inputs input {
+        padding: 12px 16px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .login-popup-container button {
+        padding: 14px 24px;
+    }
+    
+    .login-popup-social {
+        flex-direction: column;
+    }
+    
+    .login-popup-social button {
+        width: 100%;
+    }
+}
+
+/* Tablet adjustments */
+@media (max-width: 768px) and (min-width: 481px) {
+    .login-popup-container {
+        padding: 32px 32px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .login-popup,
+    .login-popup-container,
+    .login-popup-container::before,
+    .login-popup-title,
+    .login-popup-subtitle,
+    .login-popup-inputs,
+    .login-popup-input-group,
+    .login-popup-container button,
+    .login-popup-condition,
+    .login-popup p,
+    .login-popup-social,
+    .error-message,
+    .success-message {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .login-popup-inputs input.error {
+        animation: none;
+    }
+    
+    .login-popup-inputs input:hover,
+    .login-popup-inputs input:focus,
+    .login-popup-container button:hover,
+    .login-popup-title img:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .login-popup {
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: none;
+    }
+    
+    .login-popup-container {
+        background: white;
+        border: 2px solid black;
+    }
+    
+    .login-popup-inputs input {
+        border: 2px solid black;
+        background: white;
+    }
+    
+    .login-popup-container button {
+        border: 2px solid black;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .login-popup-container {
+        background: linear-gradient(135deg, 
+            rgba(30, 30, 30, 0.98) 0%,
+            rgba(20, 20, 20, 0.95) 100%);
+        color: #ccc;
+        box-shadow: 
+            0 32px 64px rgba(0, 0, 0, 0.5),
+            0 16px 32px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .login-popup-title h2 {
+        color: #fff;
+        background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .login-popup-inputs label {
+        color: #e0e0e0;
+    }
+    
+    .login-popup-inputs input {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+    
+    .login-popup-inputs input:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .login-popup-social button {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+    }
+}

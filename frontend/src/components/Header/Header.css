@@ -1,0 +1,318 @@
+/* Hero Section styling matching the uploaded FoodDash design */
+.hero-section {
+    min-height: 480px;
+    margin: 25px auto 40px;
+    background: linear-gradient(135deg, #FFEFE7 0%, #FFF5EF 50%, #FFE9DF 100%);
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 6vw;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255, 107, 43, 0.08);
+}
+
+/* Subtle background accent glow */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 114, 58, 0.12) 0%, transparent 70%);
+    top: -50px;
+    right: 5%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Left Content */
+.hero-left {
+    flex: 1;
+    max-width: 580px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    animation: heroFadeInLeft 0.8s ease-out;
+}
+
+@keyframes heroFadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 94, 43, 0.12);
+    color: #FF5E2B;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+}
+
+.hero-title {
+    font-size: clamp(32px, 4.2vw, 56px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #1F2937;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.highlight-orange {
+    color: #FF5E2B;
+}
+
+.hero-description {
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.6;
+    color: #4B5563;
+    margin: 0;
+    max-width: 480px;
+}
+
+/* Action Buttons */
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.btn-order-now {
+    background-color: #FF5E2B;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 38px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 94, 43, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-order-now:hover {
+    background-color: #E64D1D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 94, 43, 0.45);
+}
+
+.btn-order-now:active {
+    transform: translateY(0);
+}
+
+.btn-track-order {
+    background-color: transparent;
+    color: #FF5E2B;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 34px;
+    border: 2px solid #FF5E2B;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-track-order:hover {
+    background-color: rgba(255, 94, 43, 0.08);
+    transform: translateY(-2px);
+}
+
+.btn-track-order:active {
+    transform: translateY(0);
+}
+
+/* Right Content - Food Platter */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    animation: heroFadeInRight 0.8s ease-out;
+}
+
+@keyframes heroFadeInRight {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero-image-wrapper {
+    position: relative;
+    max-width: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-platter-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.15));
+    transition: transform 0.5s ease;
+    animation: floatPlatter 6s ease-in-out infinite;
+}
+
+@keyframes floatPlatter {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+.hero-platter-img:hover {
+    transform: scale(1.03) rotate(2deg);
+}
+
+/* Floating Badges */
+.floating-badge {
+    position: absolute;
+    background: #ffffff;
+    padding: 10px 16px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+    animation: pulseBadge 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseBadge {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+.badge-top {
+    top: 15px;
+    left: -20px;
+}
+
+.badge-bottom {
+    bottom: 20px;
+    right: -10px;
+}
+
+.badge-icon {
+    font-size: 24px;
+    background: #FFF5F0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.floating-badge strong {
+    display: block;
+    font-size: 13px;
+    color: #1F2937;
+    font-weight: 700;
+}
+
+.floating-badge small {
+    display: block;
+    font-size: 11px;
+    color: #6B7280;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 36px 4vw;
+        min-height: 440px;
+    }
+    .hero-platter-img {
+        max-width: 340px;
+    }
+    .badge-top {
+        left: 0;
+    }
+    .badge-bottom {
+        right: 0;
+    }
+}
+
+@media (max-width: 850px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 24px;
+        gap: 36px;
+    }
+    .hero-left {
+        align-items: center;
+        max-width: 100%;
+    }
+    .hero-description {
+        max-width: 100%;
+    }
+    .hero-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+    .hero-platter-img {
+        max-width: 320px;
+    }
+    .badge-top {
+        left: -10px;
+        top: 0;
+    }
+    .badge-bottom {
+        right: -10px;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 30px 18px;
+        border-radius: 24px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-order-now, .btn-track-order {
+        width: 100%;
+    }
+    .hero-platter-img {
+        max-width: 260px;
+    }
+    .floating-badge {
+        padding: 8px 12px;
+    }
+    .badge-icon {
+        font-size: 18px;
+        width: 32px;
+        height: 32px;
+    }
+}

@@ -1,0 +1,149 @@
+.admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 32px;
+    background: #ffffff;
+    border-bottom: 1px solid #E5E7EB;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-logo:hover {
+    transform: scale(1.02);
+}
+
+.admin-badge {
+    background: #FFF1ED;
+    color: #FF4C24;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 76, 36, 0.2);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-visit-site {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #F8FAFC;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-visit-site:hover {
+    background: #FFF5F2;
+    border-color: #FFD2C8;
+    color: #FF4C24;
+    transform: translateY(-1px);
+}
+
+.server-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #15803D;
+    background: #F0FDF4;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #BBF7D0;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.admin-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 12px;
+    border-left: 1px solid #E2E8F0;
+}
+
+.admin-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E2E8F0;
+}
+
+.admin-user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.2;
+}
+
+.admin-role {
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748B;
+}
+
+@media (max-width: 768px) {
+    .admin-navbar {
+        padding: 12px 16px;
+    }
+    .server-status-pill,
+    .admin-user-details {
+        display: none;
+    }
+    .btn-visit-site span:last-child {
+        display: none;
+    }
+}

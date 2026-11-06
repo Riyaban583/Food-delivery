@@ -1,0 +1,101 @@
+.app-download {
+    margin: 100px auto 0;
+    padding: 0 20px;
+    font-size: clamp(20px, 3vw, 32px);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.app-download-platform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 2vw, 24px);
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.app-download-platform img {
+    width: clamp(120px, 30vw, 180px);
+    height: auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07),
+                0 2px 4px rgba(0, 0, 0, 0.05);
+    filter: brightness(1);
+}
+
+.app-download-platform img:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12),
+                0 6px 12px rgba(0, 0, 0, 0.08);
+    filter: brightness(1.05);
+}
+
+.app-download-platform img:active {
+    transform: translateY(-2px) scale(1.01);
+    transition: all 0.1s ease;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .app-download {
+        color: #f5f5f5;
+    }
+    
+    .app-download-platform img {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+                    0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .app-download-platform img:hover {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4),
+                    0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Accessibility improvements */
+.app-download-platform img:focus-visible {
+    outline: 3px solid #4A90E2;
+    outline-offset: 4px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .app-download,
+    .app-download-platform img {
+        animation: none;
+        transition: none;
+    }
+    
+    .app-download-platform img:hover {
+        transform: none;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .app-download {
+        margin-top: 60px;
+    }
+    
+    .app-download-platform {
+        margin-top: 30px;
+        gap: 16px;
+    }
+}

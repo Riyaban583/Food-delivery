@@ -1,0 +1,261 @@
+/* Navbar Container */
+.navbar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo */
+.navbar .logo {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Menu */
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: #49557e;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔧 FIX: li + a + Link support */
+.navbar-menu li,
+.navbar-menu a {
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    color: #49557e;
+}
+
+.navbar-menu li:hover,
+.navbar-menu a:hover {
+    color: #2e3856;
+}
+
+/* Active Menu Item */
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557e;
+}
+
+/* Underline effect */
+.navbar-menu li::after,
+.navbar-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #49557e;
+    transition: width 0.3s ease;
+}
+
+.navbar-menu li:hover::after,
+.navbar-menu a:hover::after {
+    width: 100%;
+}
+
+.navbar-menu .active::after {
+    width: 100%;
+}
+
+/* Right Section */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar-right img {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.navbar-right img:hover {
+    transform: scale(1.1);
+}
+
+/* Sign In Button */
+.navbar-right button {
+    background: transparent;
+    font-size: 16px;
+    color: #49557e;
+    border: 1px solid tomato;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar-right button:hover {
+    background-color: #fff4f2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.2);
+}
+
+.navbar-right button:active {
+    transform: translateY(0);
+}
+
+/* Search Icon with Notification Dot */
+.navbar-search-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 50%;
+    right: -8px;
+    top: -8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1050px) {
+    .navbar .logo {
+        width: 140px;
+    }
+    
+    .navbar-menu {
+        gap: 20px;
+        font-size: 17px;
+    }
+    
+    .navbar-right {
+        gap: 30px;
+    }
+    
+    .navbar-right img {
+        width: 22px;
+    }
+    
+    .navbar-right button {
+        padding: 8px 25px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 120px;
+    }
+    
+    .navbar-menu {
+        gap: 15px;
+        font-size: 16px;
+    }
+    
+    .navbar-right {
+        gap: 20px;
+    }
+    
+    .navbar-right img {
+        width: 20px;
+    }
+    
+    .navbar-right button {
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 750px) {
+    .navbar {
+        padding: 15px 0;
+    }
+    
+    .navbar-menu {
+        display: none;
+    }
+    
+    .navbar .logo {
+        width: 100px;
+    }
+    
+    .navbar-right {
+        gap: 15px;
+    }
+    
+    .navbar-right button {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+}
+
+/* Profile Dropdown */
+.navbar-profile {
+    position: relative;
+}
+
+.nav-profile-dropdown {
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 10;
+    top:100%;
+}
+
+.navbar-profile:hover .nav-profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.nav-profile-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-profile-dropdown img {
+    width: 15px;
+}
+
+.nav-profile-dropdown li:hover {
+    color: tomato;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

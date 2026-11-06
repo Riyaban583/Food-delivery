@@ -1,0 +1,219 @@
+.add-dish-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.add-dish-header {
+    margin-bottom: 24px;
+}
+
+.add-dish-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.add-dish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    letter-spacing: 0.2px;
+}
+
+/* Image Dropzone */
+.image-dropzone {
+    border: 2px dashed #CBD5E1;
+    border-radius: 14px;
+    background: #F8FAFC;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 160px;
+}
+
+.image-dropzone:hover {
+    border-color: #FF4C24;
+    background: #FFF9F7;
+}
+
+.dropzone-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.upload-icon-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+.dropzone-text strong {
+    display: block;
+    font-size: 14px;
+    color: #1E293B;
+}
+
+.dropzone-text small {
+    display: block;
+    font-size: 12px;
+    color: #94A3B8;
+    margin-top: 2px;
+}
+
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-image {
+    max-width: 220px;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.change-image-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FF4C24;
+    background: #FFF0EB;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* Form Inputs */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #1E293B;
+    background: #FFFFFF;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: #FF4C24;
+    box-shadow: 0 0 0 3px rgba(255, 76, 36, 0.12);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+}
+
+/* Price Wrap */
+.price-group {
+    max-width: 240px;
+}
+
+.price-input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.price-input-wrap:focus-within {
+    border-color: #FF4C24;
+    box-shadow: 0 0 0 3px rgba(255, 76, 36, 0.12);
+}
+
+.price-currency-tag {
+    background: #F1F5F9;
+    padding: 12px 14px;
+    color: #475569;
+    font-weight: 700;
+    font-size: 15px;
+    border-right: 1px solid #CBD5E1;
+}
+
+.price-input {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Submit Button */
+.btn-add-dish {
+    margin-top: 10px;
+    padding: 14px 28px;
+    background: #FF4C24;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 76, 36, 0.25);
+    width: fit-content;
+}
+
+.btn-add-dish:hover {
+    background: #E63E17;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 76, 36, 0.35);
+}
+
+.btn-add-dish:disabled {
+    background: #CBD5E1;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+@media (max-width: 600px) {
+    .add-dish-card {
+        padding: 20px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .price-group {
+        max-width: 100%;
+    }
+    .btn-add-dish {
+        width: 100%;
+    }
+}

@@ -300,20 +300,6 @@ Use Stripe's test card in test mode:
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots of your app here to make the README shine.
-
-| Home Page | Cart | Checkout |
-|:---------:|:----:|:--------:|
-| ![Home](./screenshots/home.png) | ![Cart](./screenshots/cart.png) | ![Checkout](./screenshots/checkout.png) |
-
-| Admin – Add Item | Admin – Orders |
-|:----------------:|:--------------:|
-| ![Add](./screenshots/admin-add.png) | ![Orders](./screenshots/admin-orders.png) |
-
----
-
 ## 🗺️ Roadmap
 
 - [ ] Admin authentication & role-based access

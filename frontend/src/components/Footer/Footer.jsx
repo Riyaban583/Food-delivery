@@ -23,6 +23,7 @@ const Footer = () => {
                     <li>About</li>
                     <li>Delivery</li>
                     <li>Privacy policy</li>
+                    <li><a href={import.meta.env.VITE_ADMIN_URL || "https://food-delivery-oo3f.vercel.app/orders"} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>Admin Panel</a></li>
                 </ul>
             </div>
 

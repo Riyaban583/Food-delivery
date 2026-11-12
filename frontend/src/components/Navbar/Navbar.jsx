@@ -67,6 +67,16 @@ const Navbar = ({ setShowLogin }) => {
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
 
+        <a 
+          href={import.meta.env.VITE_ADMIN_URL || "https://food-delivery-oo3f.vercel.app/orders"} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="navbar-admin-link"
+          title="Open Admin Dashboard"
+        >
+          Admin
+        </a>
+
         {!token ? (
           <button onClick={() => setShowLogin(true)}>sign in</button>
         ) : (

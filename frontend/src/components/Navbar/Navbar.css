@@ -101,6 +101,26 @@
     font-weight: 500;
 }
 
+.navbar-admin-link {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #49557e;
+    border: 1px solid #49557e;
+    padding: 8px 18px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-admin-link:hover {
+    background-color: #49557e;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(73, 85, 126, 0.2);
+}
+
 .navbar-right button:hover {
     background-color: #fff4f2;
     transform: translateY(-2px);

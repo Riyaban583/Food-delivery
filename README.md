@@ -13,15 +13,23 @@ A full-stack food delivery web application built with the **MERN stack** and **S
 ![Stripe](https://img.shields.io/badge/Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [API Reference](#-api-reference) • [Payment Flow](#-stripe-payment-flow) • [Contributing](#-contributing)
+[Live Demos](#-live-demos) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [API Reference](#-api-reference) • [Payment Flow](#-stripe-payment-flow) • [Contributing](#-contributing)
 
 </div>
+
+---
+
+## 🌐 Live Demos
+
+- 🛒 **Customer Frontend Website**: [https://food-delivery-eosin-theta.vercel.app/](https://food-delivery-eosin-theta.vercel.app/)
+- 🛠️ **Admin Dashboard**: [https://food-delivery-oo3f.vercel.app/orders](https://food-delivery-oo3f.vercel.app/orders)
 
 ---
 
 ## 📖 Table of Contents
 
 - [About](#-about)
+- [Live Demos](#-live-demos)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
@@ -191,17 +199,31 @@ MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/nukkadeats
 # Auth
 JWT_SECRET=your_super_secret_key
 
+# Stripe
+STRIPE_SECRET_KEY=sk_test_...
 
 # Frontend URL (used for Stripe success/cancel redirects)
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=https://food-delivery-eosin-theta.vercel.app
 ```
 
-### Frontend & Admin
-
-Update the backend URL in the frontend context file (or a `.env` file if you prefer):
+### `frontend/.env`
 
 ```env
+# Backend API Base URL
 VITE_API_URL=http://localhost:4000
+
+# Admin Portal URL
+VITE_ADMIN_URL=https://food-delivery-oo3f.vercel.app/orders
+```
+
+### `admin/.env`
+
+```env
+# Backend API Base URL
+VITE_API_URL=http://localhost:4000
+
+# Customer Website URL
+VITE_FRONTEND_URL=https://food-delivery-eosin-theta.vercel.app
 ```
 
 > ⚠️ **Never commit your `.env` file.** Make sure it is listed in `.gitignore`.

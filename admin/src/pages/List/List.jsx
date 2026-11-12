@@ -4,7 +4,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { assets } from '../../assets/assets'
 
-const List = ({ url = "http://localhost:4000" }) => {
+const List = ({ url = import.meta.env.VITE_API_URL || "http://localhost:4000" }) => {
 
   const [list, setList] = useState([])
   const [loading, setLoading] = useState(true)

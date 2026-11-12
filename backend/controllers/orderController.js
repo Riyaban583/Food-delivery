@@ -9,7 +9,7 @@ const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SEC
 
 // ================= ONLINE PAYMENT ORDER =================
 const placeOrder = async (req, res) => {
-    const frontend_url = process.env.FRONTEND_URL || "http://localhost:5173";
+    const frontend_url = process.env.FRONTEND_URL || "https://food-delivery-eosin-theta.vercel.app";
 
     try {
         if (!stripe) {

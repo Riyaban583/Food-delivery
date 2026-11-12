@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import axios from "axios"
 import { toast } from 'react-toastify' 
 
-const Add = ({ url = "http://localhost:4000" }) => {
+const Add = ({ url = import.meta.env.VITE_API_URL || "http://localhost:4000" }) => {
 
   const [image, setImage] = useState(false)
   const [loading, setLoading] = useState(false)

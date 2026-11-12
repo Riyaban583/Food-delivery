@@ -3,6 +3,8 @@ import './Navbar.css'
 import { assets } from '../../assets/assets'
 
 const Navbar = () => {
+  const frontendUrl = import.meta.env.VITE_FRONTEND_URL || "https://food-delivery-eosin-theta.vercel.app"
+
   return (
     <header className='admin-navbar'>
       <div className="navbar-brand">
@@ -12,7 +14,7 @@ const Navbar = () => {
 
       <div className="navbar-actions">
         <a 
-          href="http://localhost:5173" 
+          href={frontendUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
           className="btn-visit-site"
@@ -24,7 +26,7 @@ const Navbar = () => {
 
         <div className="server-status-pill">
           <span className="status-dot"></span>
-          <span>API Connected (Port 4000)</span>
+          <span>API Connected</span>
         </div>
 
         <div className="admin-profile-section">

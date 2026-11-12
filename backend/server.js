@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import mongoose from "mongoose";
 import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
@@ -28,6 +29,17 @@ app.use("/api/orders", orderRouter);
 
 app.get("/", (req, res) => {
   res.send("NukkadEats API Working");
+});
+
+app.get("/api/health", (req, res) => {
+  const dbState = mongoose.connection.readyState;
+  const states = { 0: "disconnected", 1: "connected", 2: "connecting", 3: "disconnecting" };
+  res.json({
+    status: "ok",
+    database: states[dbState] || "unknown",
+    dbReady: dbState === 1,
+    time: new Date().toISOString()
+  });
 });
 
 app.listen(port, () => {

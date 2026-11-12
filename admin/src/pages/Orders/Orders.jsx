@@ -4,7 +4,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { assets } from "../../assets/assets"
 
-const Orders = ({ url = import.meta.env.VITE_API_URL || "http://localhost:4000" }) => {
+const Orders = ({ url = import.meta.env.VITE_API_URL || "https://food-delivery-9lr0.onrender.com" }) => {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState("All")

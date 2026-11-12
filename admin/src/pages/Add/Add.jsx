@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import axios from "axios"
 import { toast } from 'react-toastify' 
 
-const Add = ({ url = import.meta.env.VITE_API_URL || "http://localhost:4000" }) => {
+const Add = ({ url = import.meta.env.VITE_API_URL || "https://food-delivery-9lr0.onrender.com" }) => {
 
   const [image, setImage] = useState(false)
   const [loading, setLoading] = useState(false)

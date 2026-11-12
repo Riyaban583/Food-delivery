@@ -7,7 +7,7 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = ({ children }) => {
 
   const [cartItems, setCartItems] = useState({});
-  const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL || "https://food-delivery-9lr0.onrender.com";
 
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [food_list, setFoodList] = useState(defaultFoodList || []);
@@ -108,6 +108,12 @@ const StoreContextProvider = ({ children }) => {
     }
     loadData();
   }, []);
+
+  useEffect(() => {
+    if (token) {
+      loadCartData(token);
+    }
+  }, [token]);
 
   return (
     <StoreContext.Provider value={{

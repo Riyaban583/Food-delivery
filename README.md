@@ -23,6 +23,7 @@ A full-stack food delivery web application built with the **MERN stack** and **S
 
 - 🛒 **Customer Frontend Website**: [https://food-delivery-eosin-theta.vercel.app/](https://food-delivery-eosin-theta.vercel.app/)
 - 🛠️ **Admin Dashboard**: [https://food-delivery-oo3f.vercel.app/orders](https://food-delivery-oo3f.vercel.app/orders)
+- ⚙️ **Backend API (Render)**: [https://food-delivery-9lr0.onrender.com/](https://food-delivery-9lr0.onrender.com/)
 
 ---
 
@@ -210,7 +211,7 @@ FRONTEND_URL=https://food-delivery-eosin-theta.vercel.app
 
 ```env
 # Backend API Base URL
-VITE_API_URL=http://localhost:4000
+VITE_API_URL=https://food-delivery-9lr0.onrender.com
 
 # Admin Portal URL
 VITE_ADMIN_URL=https://food-delivery-oo3f.vercel.app/orders
@@ -220,19 +221,19 @@ VITE_ADMIN_URL=https://food-delivery-oo3f.vercel.app/orders
 
 ```env
 # Backend API Base URL
-VITE_API_URL=http://localhost:4000
+VITE_API_URL=https://food-delivery-9lr0.onrender.com
 
 # Customer Website URL
 VITE_FRONTEND_URL=https://food-delivery-eosin-theta.vercel.app
 ```
 
-> ⚠️ **Never commit your `.env` file.** Make sure it is listed in `.gitignore`.
+> ⚠️ **Never commit your `.env` file containing sensitive credentials.** Make sure it is listed in `.gitignore`.
 
 ---
 
 ## 📡 API Reference
 
-Base URL: `http://localhost:4000/api`
+Base URL: `https://food-delivery-9lr0.onrender.com/api` (or `http://localhost:4000/api` locally)
 
 🔒 = requires `token` header (JWT)
 

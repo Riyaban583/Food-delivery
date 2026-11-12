@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 
 const Navbar = () => {
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL || "https://food-delivery-eosin-theta.vercel.app"
+  const apiUrl = import.meta.env.VITE_API_URL || "https://food-delivery-9lr0.onrender.com"
+  const [serverOnline, setServerOnline] = useState(null)
+
+  useEffect(() => {
+    let isMounted = true
+    const checkServer = async () => {
+      try {
+        const res = await fetch(`${apiUrl}/`, { method: 'GET' })
+        if (isMounted) {
+          setServerOnline(res.ok)
+        }
+      } catch (e) {
+        if (isMounted) {
+          setServerOnline(false)
+        }
+      }
+    }
+    checkServer()
+    const interval = setInterval(checkServer, 30000)
+    return () => {
+      isMounted = false
+      clearInterval(interval)
+    }
+  }, [apiUrl])
 
   return (
     <header className='admin-navbar'>
@@ -24,9 +48,21 @@ const Navbar = () => {
           <span>View Live Website</span>
         </a>
 
-        <div className="server-status-pill">
-          <span className="status-dot"></span>
-          <span>API Connected</span>
+        <div 
+          className="server-status-pill"
+          style={{
+            borderColor: serverOnline === true ? "#10b981" : serverOnline === false ? "#ef4444" : "#f59e0b"
+          }}
+          title={serverOnline === true ? "Backend server is online and responding" : serverOnline === false ? "Cannot connect to backend server" : "Checking backend status..."}
+        >
+          <span 
+            className="status-dot"
+            style={{
+              backgroundColor: serverOnline === true ? "#10b981" : serverOnline === false ? "#ef4444" : "#f59e0b",
+              boxShadow: serverOnline === true ? "0 0 6px #10b981" : serverOnline === false ? "0 0 6px #ef4444" : "0 0 6px #f59e0b"
+            }}
+          ></span>
+          <span>{serverOnline === true ? "API Online" : serverOnline === false ? "API Offline" : "Connecting..."}</span>
         </div>
 
         <div className="admin-profile-section">

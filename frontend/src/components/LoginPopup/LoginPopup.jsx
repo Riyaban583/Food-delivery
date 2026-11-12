@@ -9,6 +9,7 @@ const LoginPopup = ({ setShowLogin }) => {
   const { url, setToken } = useContext(StoreContext)
 
   const [currState, setCurrState] = useState("Login")
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -23,6 +24,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
   const onLogin = async (event) => {
     event.preventDefault()
+    setLoading(true)
 
     let newUrl = url
     if (currState === "Login") {
@@ -39,10 +41,14 @@ const LoginPopup = ({ setShowLogin }) => {
         localStorage.setItem("token", response.data.token)
         setShowLogin(false)
       } else {
-        alert(response.data.message)
+        alert(response.data.message || "Authentication failed")
       }
     } catch (error) {
-      alert("Something went wrong. Please try again.")
+      console.error("Auth error:", error)
+      const errorMsg = error.response?.data?.message || error.message || "Something went wrong. Please try again."
+      alert(errorMsg)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -93,8 +99,8 @@ const LoginPopup = ({ setShowLogin }) => {
         </div>
 
         {/* Button */}
-        <button type='submit'>
-          {currState === "Sign Up" ? "Create account" : "Login"}
+        <button type='submit' disabled={loading} style={loading ? { opacity: 0.7, cursor: "not-allowed" } : {}}>
+          {loading ? "Connecting..." : (currState === "Sign Up" ? "Create account" : "Login")}
         </button>
 
         {/* Terms */}
